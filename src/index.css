@@ -1,26 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-brand-purple: #8b5cf6;
-  --color-brand-purple-light: #a78bfa;
-  --color-brand-purple-dark: #4c1d95;
-  --color-brand-gold: #c3a154;
-  --color-brand-gold-light: #d6b872;
-  --color-brand-gold-dark: #a88842;
-  --color-brand-neon: #38bdf8;
-  --color-brand-neon-purple: #c084fc;
+  --color-brand-purple: #34284d;
+  --color-brand-purple-light: #4a386b;
+  --color-brand-purple-dark: #1b132a;
+  --color-brand-gold: #cba864;
+  --color-brand-gold-light: #ebd6a9;
+  --color-brand-gold-dark: #9e7f40;
+  --color-brand-neon: #ebd6a9;
+  --color-brand-neon-purple: #6a529e;
   
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
 }
 
 @layer base {
+  :root {
+    --app-bg: #0d0914;
+    --app-text: var(--color-gray-200);
+    --hero-bg: #0d0914;
+  }
+  
+  .light-mode {
+    --app-bg: #f8f9fa;
+    --app-text: var(--color-gray-200);
+    --hero-bg: radial-gradient(ellipse at center, #f9fafb 0%, #eaddf2 100%);
+    
+    /* Invert core colors for minimalist light mode */
+    --color-white: #000000;
+    --color-black: #ffffff;
+    
+    /* Improve contrast in light mode */
+    --color-brand-purple: #7c3aed;
+    --color-brand-purple-light: #8b5cf6;
+    --color-brand-gold-light: #80632a; /* Darker gold for better contrast */
+    --color-brand-gold: #b39250;
+    
+    /* Invert and shift grays darker for guaranteed WCAG compliance */
+    --color-gray-50: #030712;
+    --color-gray-100: #030712; /* gray-950 */
+    --color-gray-200: #111827; /* gray-900 */
+    --color-gray-300: #1f2937; /* gray-800 */
+    --color-gray-400: #374151; /* gray-700 */
+    --color-gray-500: #4b5563; /* gray-600 */
+    --color-gray-600: #6b7280; /* gray-500 */
+    --color-gray-700: #9ca3af; /* gray-400 */
+    --color-gray-800: #d1d5db; /* gray-300 */
+    --color-gray-900: #e5e7eb; /* gray-200 */
+    --color-gray-950: #f3f4f6; /* gray-100 */
+  }
+
+  .light-mode .force-dark {
+    --color-white: #ffffff;
+    --color-black: #000000;
+    
+    --color-brand-gold-light: #ebd6a9;
+    --color-brand-gold: #cba864;
+    --color-brand-purple: #34284d;
+    --color-brand-purple-light: #4a386b;
+    
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+    --color-gray-950: #030712;
+  }
+
   body {
-    @apply bg-[#09090b] text-gray-100 font-sans antialiased;
+    background-color: var(--app-bg);
+    color: var(--app-text);
+    @apply font-sans antialiased selection:bg-brand-gold/20 selection:text-brand-gold-dark transition-colors duration-500;
   }
 }
 
 @layer components {
   .glass-panel {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+    @apply bg-white/[0.03] backdrop-blur-3xl border border-white/[0.08] shadow-none transition-colors duration-500;
   }
 }

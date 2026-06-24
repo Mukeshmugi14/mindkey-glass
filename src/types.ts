@@ -11,6 +11,8 @@ export interface Product {
   sales?: number;
   badge?: 'Best Seller' | 'Best Deal';
   itemsIncluded?: number;
+  isLocked?: boolean;
+  prerequisite?: string;
 }
 
 export interface Testimonial {

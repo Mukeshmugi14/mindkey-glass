@@ -1,46 +1,156 @@
-import { BadgeCheck, Heart, Award, Users } from 'lucide-react';
+import { motion } from 'motion/react';
+import HeroBackground3D from './HeroBackground3D';
 
 export default function ProfileHeader() {
   return (
-    <div className="relative w-full pt-20 pb-16 px-6 flex flex-col items-center text-center overflow-hidden border-b border-white/10">
-      {/* 3D-like glowing orb backgrounds */}
-      <div className="absolute top-[-20%] left-[20%] w-96 h-96 bg-brand-purple rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-pulse pointer-events-none"></div>
-      <div className="absolute bottom-[-10%] right-[10%] w-80 h-80 bg-brand-neon rounded-full mix-blend-screen filter blur-[100px] opacity-20 pointer-events-none"></div>
-      
-      <div className="relative z-10 w-32 h-32 rounded-full border border-white/20 bg-black/50 backdrop-blur-xl flex items-center justify-center overflow-hidden mb-6 shadow-[0_0_30px_rgba(139,92,246,0.3)]">
-        {/* Glowing key logo */}
-        <div className="text-brand-neon flex flex-col items-center drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]">
-            <svg viewBox="0 0 100 100" className="w-16 h-16 fill-current" xmlns="http://www.w3.org/2000/svg">
-              <path d="M50 10C33.4 10 20 23.4 20 40C20 54.5 30.3 66.6 44 69.3V80H40C37.8 80 36 81.8 36 84C36 86.2 37.8 88 40 88H44V92C44 94.2 45.8 96 48 96H52C54.2 96 56 94.2 56 92V88H60C62.2 88 64 86.2 64 84C64 81.8 62.2 80 60 80H56V69.3C69.7 66.6 80 54.5 80 40C80 23.4 66.6 10 50 10ZM50 62C37.9 62 28 52.1 28 40C28 27.9 37.9 18 50 18C62.1 18 72 27.9 72 40C72 52.1 62.1 62 50 62Z"/>
-              <path d="M42 36C42 40.4 45.6 44 50 44C54.4 44 58 40.4 58 36H42Z"/>
-            </svg>
-        </div>
+    <div 
+      className="relative w-full pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 flex flex-col items-center text-center overflow-hidden border-b border-black/5 dark:border-white/[0.02] min-h-[70vh] sm:min-h-[auto] justify-center transition-all duration-500"
+      style={{ background: 'var(--hero-bg)' }}
+    >
+      <div className="absolute inset-0 z-0 force-dark">
+        <HeroBackground3D />
+        
+        {/* 3D-like glowing orb backgrounds - Subtler for minimalism */}
+        <div className="absolute top-[-20%] left-[20%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-purple rounded-full filter blur-[100px] sm:blur-[150px] opacity-15 pointer-events-none"></div>
+        <div className="absolute bottom-[-10%] right-[10%] w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-brand-gold rounded-full filter blur-[100px] sm:blur-[150px] opacity-15 pointer-events-none"></div>
       </div>
       
-      <h1 className="text-4xl font-black mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white drop-shadow-md">Mind and Keys</h1>
-      <h2 className="text-lg text-brand-neon mb-2 font-medium">by Mukesh Karpagaraja</h2>
-      <p className="max-w-lg mx-auto leading-relaxed text-gray-300 mb-8 font-light">
-        Psychologist <span className="text-brand-purple">•</span> Assistant Professor <span className="text-brand-purple">•</span> Helping Students Crack UGC NET
-      </p>
+      <div className="relative z-10 flex flex-col items-center w-full max-w-3xl">
+        {/* Logo Container */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="force-dark"
+        >
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+            className="w-20 h-20 sm:w-24 sm:h-24 mb-6 sm:mb-10 relative flex items-center justify-center rounded-full bg-brand-purple border border-brand-gold/10 p-3 sm:p-4 shadow-[0_0_30px_rgba(203,168,100,0.15)] before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-b before:from-brand-gold/10 before:to-transparent before:opacity-20 mx-auto"
+          >
+            <img 
+              src="/logo.png" 
+              alt="Mind & Keys" 
+              className="w-full h-full object-contain mix-blend-lighten relative z-10"
+              onError={(e) => {
+                // Fallback to minimal SVG if logo isn't uploaded yet
+                e.currentTarget.style.display = 'none';
+                document.getElementById('fallback-logo')?.classList.remove('hidden');
+              }}
+            />
+            <div id="fallback-logo" className="hidden relative z-10 flex flex-col items-center">
+              <svg viewBox="0 0 100 120" className="w-10 h-12 sm:w-12 sm:h-14 drop-shadow-[0_0_15px_rgba(203,168,100,0.4)]" xmlns="http://www.w3.org/2000/svg">
+                <path d="
+                  M50,10
+                  C35,10 25,18 25,28
+                  C25,32 27,36 31,39
+                  C23,43 20,52 24,60
+                  C27,67 36,70 46,70
+                  L46,92
+                  C40,92 36,96 36,102
+                  C36,108 40,112 46,112
+                  L46,116
+                  C46,118 54,118 54,116
+                  L54,112
+                  C60,112 64,108 64,102
+                  C64,96 60,92 54,92
+                  L54,70
+                  C64,70 73,67 76,60
+                  C80,52 77,43 69,39
+                  C73,36 75,32 75,28
+                  C75,18 65,10 50,10
+                  Z
+  
+                  M49,12
+                  L51,12
+                  L51,68
+                  L49,68
+                  Z
+  
+                  M45,18
+                  C38,18 32,23 32,28
+                  C32,36 45,38 45,38
+                  L45,18
+                  Z
+  
+                  M55,18
+                  C62,18 68,23 68,28
+                  C68,36 55,38 55,38
+                  L55,18
+                  Z
+  
+                  M45,45
+                  L40,44
+                  C32,42 30,50 32,54
+                  C34,58 40,62 45,62
+                  L45,45
+                  Z
+  
+                  M55,45
+                  L60,44
+                  C68,42 70,50 68,54
+                  C66,58 60,62 55,62
+                  L55,45
+                  Z
+  
+                  M46,98
+                  L42,98
+                  C41,98 40,99 40,102
+                  C40,105 41,106 42,106
+                  L46,106
+                  L46,98
+                  Z
+  
+                  M54,98
+                  L58,98
+                  C59,98 60,99 60,102
+                  C60,105 59,106 58,106
+                  L54,106
+                  L54,98
+                  Z
+                " fill="#cba864" fillRule="evenodd" />
+              </svg>
+            </div>
+          </motion.div>
+        </motion.div>
+        
+        {/* Minimalist Typography */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          className="text-2xl sm:text-4xl md:text-5xl font-serif tracking-[0.2em] sm:tracking-[0.25em] text-brand-gold-light uppercase mb-3 sm:mb-4 drop-shadow-sm text-center px-2"
+        >
+          Mind & Keys
+        </motion.h1>
+        
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-[9px] sm:text-xs md:text-sm text-gray-400 font-light tracking-[0.15em] uppercase mb-8 sm:mb-0"
+        >
+          <span>Psychologist</span>
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-brand-gold/50"></span>
+          <span>Assistant Professor</span>
+        </motion.div>
 
-      <div className="flex flex-wrap justify-center gap-3 mb-8">
-        <div className="flex items-center gap-1.5 glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-brand-gold/50 transition-colors">
-          <Award className="w-4 h-4 text-brand-gold drop-shadow-[0_0_5px_rgba(195,161,84,0.5)]" />
-          <span className="text-gray-200">Top 1%</span>
-        </div>
-        <div className="flex items-center gap-1.5 glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-red-400/50 transition-colors">
-          <Heart className="w-4 h-4 text-red-400 drop-shadow-[0_0_5px_rgba(248,113,113,0.5)]" />
-          <span className="text-gray-200">Community Care</span>
-        </div>
-        <div className="flex items-center gap-1.5 glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-brand-neon/50 transition-colors">
-          <BadgeCheck className="w-4 h-4 text-brand-neon drop-shadow-[0_0_5px_rgba(56,189,248,0.5)]" />
-          <span className="text-gray-200">Hustler</span>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-2 text-sm text-brand-neon glass-panel px-5 py-2.5 rounded-xl border-brand-neon/20 shadow-[0_0_15px_rgba(56,189,248,0.1)]">
-        <Users className="w-4 h-4" />
-        <span className="font-bold text-white text-base">152+</span> Bookings
+        {/* Mobile Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
+          className="sm:hidden mt-10 flex flex-col items-center justify-center gap-2 text-gray-500"
+        >
+          <span className="text-[9px] tracking-[0.2em] uppercase font-medium">Scroll</span>
+          <motion.div 
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            className="w-4 h-6 border border-gray-600 rounded-full flex justify-center p-1"
+          >
+            <div className="w-0.5 h-1.5 bg-brand-gold/70 rounded-full"></div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

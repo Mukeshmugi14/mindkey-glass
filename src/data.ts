@@ -47,6 +47,16 @@ export const products: Product[] = [
     badge: 'Best Seller',
   },
   {
+    id: '7',
+    type: 'Course',
+    title: 'UGC NET Psychology Advanced Units 5–8',
+    description: 'Master the complex advanced units of UGC NET Psychology',
+    price: 8,
+    originalPrice: 15,
+    isLocked: true,
+    prerequisite: 'Complete Units 1–4 first',
+  },
+  {
     id: '6',
     type: 'Bundle',
     title: 'UGC NET All in One Prep Guide',

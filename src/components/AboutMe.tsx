@@ -11,8 +11,8 @@ export default function AboutMe() {
           About Me
         </h2>
         
-        <div className="glass-panel p-8 rounded-3xl">
-          <div className="prose prose-invert max-w-none text-gray-300 space-y-5 leading-relaxed text-lg">
+        <div className="glass-panel p-5 sm:p-8 rounded-3xl">
+          <div className="prose prose-invert max-w-none text-gray-300 space-y-4 sm:space-y-5 leading-relaxed text-base sm:text-lg">
             <p>
               A psychologist and assistant professor who has cleared UGC NET 3 times. 
               Founder of <strong className="text-brand-neon font-semibold">Mind and Keys</strong> — an education platform for psychology 
