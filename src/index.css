@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #8b5cf6;
+  --color-brand-purple-light: #a78bfa;
+  --color-brand-purple-dark: #4c1d95;
+  --color-brand-gold: #c3a154;
+  --color-brand-gold-light: #d6b872;
+  --color-brand-gold-dark: #a88842;
+  --color-brand-neon: #38bdf8;
+  --color-brand-neon-purple: #c084fc;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#09090b] text-gray-100 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+}

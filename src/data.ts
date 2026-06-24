@@ -1,0 +1,86 @@
+import { Product, Testimonial } from './types';
+
+export const products: Product[] = [
+  {
+    id: '1',
+    type: 'Digital Product',
+    title: 'UGC NET Psychology – 13 Cycle Mock Test Series',
+    description: '13 full-length mock tests to strengthen your preparation',
+    price: 2,
+    originalPrice: 4,
+  },
+  {
+    id: '2',
+    type: 'Digital Product',
+    title: 'UGC NET Psychology Unit-Wise PYQs (All 10 Units)',
+    description: 'Carefully Compiled Unit-Wise PYQs for Strategic Preparation',
+    price: 6,
+    originalPrice: 10,
+    rating: 5,
+  },
+  {
+    id: '3',
+    type: 'Digital Product',
+    title: 'UGC NET Psychology Notes (for all 10 UNITS)',
+    description: '1200+ slides for UGC NET Psychology all 10 UNITS',
+    price: 11,
+    originalPrice: 16,
+  },
+  {
+    id: '4',
+    type: 'Digital Product',
+    title: 'Hand Written Notes for UGC NET Psychology',
+    description: 'Handwritten notes (300+ pages)',
+    price: 6,
+    originalPrice: 8,
+    rating: 5,
+  },
+  {
+    id: '5',
+    type: 'Course',
+    title: 'UGC NET Psychology Fast Track Units 1–4 (Tamil)',
+    description: 'Complete recorded course for Units 1–4',
+    price: 6,
+    originalPrice: 11,
+    rating: 5,
+    sales: 22,
+    badge: 'Best Seller',
+  },
+  {
+    id: '6',
+    type: 'Bundle',
+    title: 'UGC NET All in One Prep Guide',
+    description: 'Includes: Unit-Wise PYQs + Notes (all 10 units) + Handwritten Notes',
+    price: 16,
+    originalPrice: 22,
+    badge: 'Best Deal',
+    itemsIncluded: 3,
+  },
+];
+
+export const testimonials: Testimonial[] = [
+  {
+    id: '1',
+    content: 'Affordable class, worth every penny...',
+    author: 'Rajasree Prabhakaran',
+    date: '20 Jun 2026',
+  },
+  {
+    id: '2',
+    content: 'Really loved the notes, precise and crisp...',
+    author: 'Shobana',
+    date: '20 May 2026',
+  },
+  {
+    id: '3',
+    content: 'It helps me a lot',
+    author: 'Dhanalakshmi.S',
+    date: '20 May 2026',
+  },
+  {
+    id: '4',
+    content: 'Precise and to the point, highly recommend for UGC NET',
+    author: 'Anonymous',
+    date: '11 May 2026',
+  },
+];
